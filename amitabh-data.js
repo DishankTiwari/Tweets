@@ -1,4 +1,5 @@
-[
+var amitabh = 
+	[
 {
 	"contributors":null,
 	"truncated":false,
