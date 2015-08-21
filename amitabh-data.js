@@ -1,3 +1,4 @@
+var arr = [];
 var amitabh = 
 	[
 {

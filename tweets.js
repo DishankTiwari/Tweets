@@ -4,45 +4,46 @@ window.onload = function() {
 
 function main() {
     var color = "grey";
-    var paper = Raphael(750, 150, 700, 700);
+    var paper = Raphael(650, 100, 700, 700);
     var row = Math.sqrt(amitabh.length);
     var arr = [];
     s();
     bubble(row, row);
 
-    function bubble(cols, rows, arr_name) {
+    function bubble(cols, rows) {
         var count = 0;
-        var padding = 15;
+        var padding = 20;
 
         for (var i = 0; i < rows; i++) {
 
-            cy = padding + (i * padding)
+            y = padding + (i * padding)
             for (var j = 0; j < cols; j++) {
                 count++;
 
-                var cx = 50 + padding + (j * padding);
+                var x = 100 + padding + (j * padding);
                 var r = amitabh[count].retweet_count / 70;
 
-                if (arr[i].theme == "cinema")
+                if (arr[count].theme == "cinema")
                     color = "red";
-                else if (arr[i].theme == "sport")
+                else if (arr[count].theme == "sport")
                     color = "pink";
-                else if (arr[i].theme == "family")
+                else if (arr[count].theme == "family")
                     color = "green";
-                else if (arr[i].theme == "kbc")
+                else if (arr[count].theme == "kbc")
                     color = "orange";
-                else if (arr[i].theme == "india")
+                else if (arr[count].theme == "india")
                     color = "lightblue";
-                else if (arr[i].theme == "love")
+                else if (arr[count].theme == "love")
                     color = "purple";
 
-                var c = paper.circle(cx, cy, r)
+                var c = paper.circle(x, y, r)
                     .attr({
-                        fill: color,
+                        "fill": color,
                         "stroke": "none",
                         "cursor": "pointer",
                         "title": "@Amitabh Bachchan : " + amitabh[count].text
                     });
+                console.log(arr[count].text);
             }
         }
     }
@@ -57,37 +58,37 @@ function main() {
                 text: s,
                 retweet_count: amitabh[i].retweet_count
             });
-            if (amitabh[i].text.match(/(cinema|movie|film|trailer|song)/i))
+            if (amitabh[i].text.match(/(cinema|trailer|song|movie|film)/i))
                 arr.push({
                     text: amitabh[i].text,
                     retweet_count: amitabh[i].retweet_count,
                     theme: "cinema"
                 });
-            if (amitabh[i].text.match(/(sport|world cup|cricket|kabaddi|football|goal|game)/i))
+            else if (amitabh[i].text.match(/(sport|game|world cup|cricket|football|kabaddi|goal)/i))
                 arr.push({
                     text: amitabh[i].text,
                     retweet_count: amitabh[i].retweet_count,
                     theme: "sport"
                 });
-            if (amitabh[i].text.match(/(family)/i))
+            else if (amitabh[i].text.match(/(family)/i))
                 arr.push({
                     text: amitabh[i].text,
                     retweet_count: amitabh[i].retweet_count,
                     theme: "family"
                 });
-            if (amitabh[i].text.match(/kbc/i))
+            else if (amitabh[i].text.match(/kbc/i))
                 arr.push({
                     text: amitabh[i].text,
                     retweet_count: amitabh[i].retweet_count,
                     theme: "kbc"
                 });
-            if (amitabh[i].text.match(/india/i))
+            else if (amitabh[i].text.match(/india/i))
                 arr.push({
                     text: amitabh[i].text,
                     retweet_count: amitabh[i].retweet_count,
                     theme: "india"
                 });
-            if (amitabh[i].text.match(/(peace|happiness|love|fun|great|fantastic|wonderful|incredible|brilliant)/i))
+            else if (amitabh[i].text.match(/(peace|happiness|love|fun|great|fantastic|wonderful|incredible|brilliant)/i))
                 arr.push({
                     text: amitabh[i].text,
                     retweet_count: amitabh[i].retweet_count,
